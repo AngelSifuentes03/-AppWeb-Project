@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DecoManager - Aplicación para gestión de cotizaciones de cortinas y persianas">
+    <meta name="theme-color" content="#FFFFFF">
+    <link rel="icon" href="/IMG/infinito.png">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="preload" href="../CSS/style_bar.css" as="style">
+    <link rel="preload" href="../CSS/style_home.css" as="style">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>DecoManager</title>
+    <link rel="stylesheet" href="../CSS/style_bar.css">
+    <link rel="stylesheet" href="../CSS/style_admin.css">
+    <link rel="stylesheet" href="../CSS/style_us.css">
+    <link rel="stylesheet" href="../CSS/style_home.css">
+    <!-- FullCalendar CSS -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css" rel="stylesheet" />
+
+<!-- FullCalendar JS -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js"></script>
+
+
+
+
+
+    
+    
+</head>
+<body>
+    <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+    </div>
+
+    <div class="barra-lateral">
+        <div>
+            <div class="nombre-pagina">
+                <ion-icon id="cloud" name="infinite-outline"></ion-icon>
+                <span>DecoManager</span>
+            </div>
+            <button class="boton" type="button" id="logout-button">
+                <ion-icon name="exit-outline"></ion-icon>
+                <span>Cerrar sesión</span>
+            </button>
+        </div>
+
+        <nav class="navegacion">
+            <ul>
+                <li>
+                    <a id="home" href="#">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a id="users" href="#">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="history" href="#">
+                        <ion-icon name="bar-chart-outline"></ion-icon>
+                        <span>Historial</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="samples" href="#">
+                        <ion-icon name="file-tray-full-outline"></ion-icon>
+                        <span>Cotizaciones</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="calendar" href="#">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                        <span>Calendario</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div>
+            <div class="linea"></div>
+
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Dark Mode</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        
+        <div id="home-content" class="content-section">
+            <div class="container_hm">
+                <h1>Bienvenido</h1>
+                <p>Hola Francisco Cabrera, esta es tu interfaz de usuario donde podrás </br> 
+                    visualizar usuarios, gestionar cotizaciones, bloquear y desbloquear </br> 
+                    usuarios, así como aceptar nuevos registros. </br> 
+                    Optimiza la administración de tus proyectos y aprovecha al máximo </br> 
+                    las herramientas que DecoManager ofrece para simplificar tu proceso.</br>
+                    </p>
+                <div class="container_wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fafafa;"></path></svg></div>    
+                <div class="cont-img">
+                    <img src="../IMG/DCM.png" alt="">
+                </div>
+            </div>
+            
+            <div class="container_support">
+                <h1>Soporte tecnico</h1>
+                <div class="sup_txt">
+                    <p></p><i class='bx bxl-gmail icono'></i> pyahirsvds@gmail.com</p>
+                    <p></p><i class='bx bxl-whatsapp icono' ></i> (449)102-52-78</p>
+                    <p id="llam"><i class='bx bx-phone-call icono'></i> (449)926-77-88</p>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+       
+        
+        <div id="users-content" class="content-section">
+            <div class="users-container">
+                <h1>Usuarios</h1>
+                <table id="users-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Email</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-tbody">
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        
+        
+        <div id="history-content" class="content-section">
+            <div class="history-container">
+                <h1>Historial de actividad</h1>
+            </div>
+            
+        </div>
+        <div id="samples-content" class="content-section">
+            <div class="container-samples">
+                <h1>Archivos de Cotización</h1>
+                <table id="files-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Archivo</th>
+                            <th>Fecha de Subida</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se cargarán dinámicamente las filas con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div id="calendar-content" class="content-section">
+            <div class="container_calendar">
+                <h1>Calendario</h1>
+                <div id="calendario"></div>
+            </div>
+            
+            
+            <div id="event-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Eventos del <span id="modal-date"></span></h2>
+                    <ul id="modal-events-list"></ul>
+                    <form id="modal-event-form">
+                        <label for="modal-event-title">Título:</label>
+                        <input type="text" id="modal-event-title" placeholder="Título del evento" required>
+                        <button type="submit">Agregar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+    </main>
+    <script src="../JavaScript/cotizaciones.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../JavaScript/script_bar.js" defer></script>
+    <script src="../JavaScript/users.js" defer></script>
+    <script src="../JavaScript/calendar.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          function loadLog() {
+            fetch('/api/logs')
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Error al cargar el log');
+                }
+                return response.text();
+              })
+              .then(data => {
+                const historyContainer = document.querySelector('.history-container');
+                const logContent = document.createElement('pre'); // Usar 'pre' para preservar los saltos de línea
+                logContent.textContent = data;
+      
+                // Limpiar el contenido previo y agregar el nuevo log
+                historyContainer.innerHTML = '<h1>Historial de actividad</h1>';
+                historyContainer.appendChild(logContent);
+              })
+              .catch(error => {
+                console.error('Error al cargar el log:', error);
+              });
+          }
+      
+          // Cargar el log inicialmente
+          loadLog();
+      
+          // Actualizar el log cada 3 segundos (3000 milisegundos)
+          setInterval(loadLog, 3000);
+        });
+      </script>
+      
+      
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = document.querySelectorAll(".item");
+
+            function lazyLoad() {
+                lazyImages.forEach(function(image) {
+                    if (image.dataset.src && isInViewport(image)) {
+                        image.style.backgroundImage = 'url(' + image.dataset.src + ')';
+                        image.removeAttribute("data-src");
+                    }
+                });
+            }
+
+            function isInViewport(element) {
+                var rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            
+            lazyLoad();
+
+            
+            document.addEventListener("scroll", lazyLoad);
+        });
+    </script>
+    <script>
+        document.getElementById('logout-button').addEventListener('click', function() {
+            fetch('/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/index.html';
+                } else {
+                    alert('Error al cerrar sesión');
+                }
+            })
+            .catch(error => {
+                console.error('Error al cerrar sesión:', error);
+            });
+        });
+    </script>
+    
+</body>
+</html>
