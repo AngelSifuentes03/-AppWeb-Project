@@ -1,0 +1,178 @@
+.content-section {
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+#home-content {
+    display: block; /* Mostrar por defecto */
+    padding: 20px;
+}
+
+#curtains-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinear al principio del contenedor */
+    padding: 20px;
+    height: 100vh;
+    overflow: auto; /* Permitir scroll */
+}
+
+.form-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px;
+    margin-left: -2vh;
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #1483a4;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    color: #1483a4;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-right: 30px;
+}
+
+.form-check input {
+    margin-right: 10px;
+}
+
+.form-check-inline {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.form-check-inline input[type="radio"],
+.form-check-inline input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.form-check-inline input[type="radio"]:checked,
+.form-check-inline input[type="checkbox"]:checked {
+    background-color: #CC9539;
+}
+.btn-submit{
+    background-color: #1483a4;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.filter-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-container-a {
+    max-height: 170px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+
+.filter-options-a {
+    margin-bottom: 20px;
+}
+
+.select-filter-a, .search-input-a {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+.select-filter-a {
+    background-color: #fff;
+}
+
+.search-input-a {
+    background-color: #f9f9f9;
+}
+
+.search-input-a:placeholder {
+    color: #888;
+}
+
+.select-filter-a {
+    width: 150px;
+}
+/*TELAS*/
+.table-container-t {
+    max-height: 90px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+/* Estilo para los campos de filtro */
+.filter-options {
+    margin-bottom: 20px;
+}
+
+.select-filter-t, .search-input-t {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+.select-filter-t {
+    background-color: #fff;
+}
+
+.search-input-t {
+    background-color: #f9f9f9;
+}
+
+.search-input-t::placeholder {
+    color: #888;
+}
+
+.select-filter-t {
+    width: 150px;
+}

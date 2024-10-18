@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DecoManager - Aplicación para gestión de cotizaciones de cortinas y persianas">
+    <meta name="theme-color" content="#FFFFFF">
+    <link rel="icon" href="/IMG/infinito.png">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="preload" href="../CSS/style_bar.css" as="style">
+    <link rel="preload" href="../CSS/style_home.css" as="style">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>DecoManager</title>
+    <link rel="stylesheet" href="../CSS/style_bar.css">
+    <link rel="stylesheet" href="../CSS/style_home.css">
+    <link rel="stylesheet" href="../CSS/style_curt.css">
+    
+
+    
+    
+</head>
+<body>
+    <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+    </div>
+
+    <div class="barra-lateral">
+        <div>
+            <div class="nombre-pagina">
+                <ion-icon id="cloud" name="infinite-outline"></ion-icon>
+                <span>DecoManager</span>
+            </div>
+            <button class="boton" type="button" id="logout-button">
+                <ion-icon name="exit-outline"></ion-icon>
+                <span>Cerrar sesión</span>
+            </button>
+        </div>
+
+        <nav class="navegacion">
+            <ul>
+                <li>
+                    <a id="home" href="#">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a id="curtains" href="#">
+                        <ion-icon name="cut-outline"></ion-icon>
+                        <span>Cortinas</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="curtain-rods" href="#">
+                        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                        <span>Cortineros</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="automated" href="#">
+                        <ion-icon name="wifi-outline"></ion-icon>
+                        <span>Automáticas</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a id="samples" href="#">
+                        <ion-icon name="file-tray-full-outline"></ion-icon>
+                        <span>Cotizaciones</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div>
+            <div class="linea"></div>
+
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Dark Mode</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        
+        <div id="home-content" class="content-section">
+            <div class="container_hm">
+                <h1>Bienvenido</h1>
+                <p>Descubre DecoManager, la herramienta ideal para calcular </br> presupuestos precisos basados en medidas y materiales. </br> Optimiza la gestión de tus proyectos de decoración con nuestra </br> plataforma intuitiva, diseñada para simplificar el proceso  </br>de cotización de elementos decorativos.</p>
+                <div class="container_wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fafafa;"></path></svg></div>    
+                <div class="cont-img">
+                    <img src="../IMG/DCM.png" alt="">
+                </div>
+            </div>
+            
+            <div class="container_support">
+                <h1>Soporte tecnico</h1>
+                <div class="sup_txt">
+                    <i class='bx bxl-facebook icono'></i><a href="https://www.facebook.com/profile.php?id=100042631865969" target="_blank">Yahir Valenzuela</a></p>
+                    <p></p><i class='bx bxl-gmail icono'></i> pyahirsvds@gmail.com</p>
+                    <p></p><i class='bx bxl-whatsapp icono' ></i> (449)102-52-78</p>
+                    <p id="llam"><i class='bx bx-phone-call icono'></i> (449)926-77-88</p>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+       
+        
+        <div id="curtains-content" class="content-section">
+            <form class="form-container" id="curtains-product" method="POST" action="/api/cotizacion" autocomplete="off">
+              <h2>Pedido Cortinas</h2>
+              <div class="form-group">
+                <input type="hidden" id="cort" name="cort" value="Cortinas">
+              </div>
+              <div class="form-group">
+                <label for="fecha"><i class='bx bx-calendar'></i> Fecha</label>
+                <input type="date" id="fecha" name="fecha" required>
+              </div>
+              <div class="form-group">
+                <label for="nombre"><i class='bx bx-user'></i> Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="calle"><i class='bx bx-location'></i> Calle</label>
+                <input type="text" id="domicilio" name="domicilio" placeholder="Calle" required>
+              </div>
+              <div class="form-group">
+                <label for="numero"><i class='bx bx-location'></i> Número</label>
+                <input type="text" id="numero" name="numero" placeholder="Número" required>
+              </div>
+              <div class="form-group">
+                <label for="colonia"><i class='bx bx-building'></i> Colonia</label>
+                <input type="text" id="colonia" name="colonia" placeholder="Colonia" required>
+              </div>
+              <div class="form-group">
+                <label for="email"><i class='bx bx-envelope'></i> Correo Electrónico</label>
+                <input type="text" id="email" name="email" placeholder="Correo Electrónico" required>
+              </div>
+              <div class="form-group">
+                <label for="telefono"><i class='bx bx-phone'></i> Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+              </div>
+          
+              <!-- Opciones de cortinas -->
+              <div id="curtains-options-container">
+                <div class="curtain-option">
+                        <div class="form-group">
+                            <label for="lugar[]"><i class='bx bx-home'></i> Área</label>
+                            <input type="text" id="lugar" name="lugar[]" placeholder="Área" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="make"><i class='bx bx-home'></i>Confección</label>
+                            <select name="make[]" class="make form-control">
+                                <option value="Plitz frances">Plitz francés</option>
+                                <option value="Ondulet">Ondulet</option>
+                                <option value="Ojillos">Ojillos</option>
+                                <option value="Visillos">Visillos</option>
+                                <option value="Presillas">Presillas</option>
+                                <option value="Presilla oculta">Presilla oculta</option>
+                                <option value="Tableado">Tableado</option>
+                                <option value="Pliegue inverso">Pliegue inverso</option>
+                            </select>
+                        </div>                                      
+                        <div class="form-group">
+                            <label><i class='bx bx-library'></i> Telas</label>
+                            <div class="filter-options">
+                                <select class="select-filter-t" name="proveedor[]">
+                                    <option value="Mazahua">Mazahua</option>
+                                    <option value="Vertilux">Vertilux</option>
+                                    <option value="Atelier">Atelier</option>
+                                    <option value="ProyectaTex">ProyectaTex</option>
+                                    <option value="Dicsa">Dicsa</option>
+                                    <option value="Pani">Pani</option>
+                                    <option value="Vistatex">Vistatex</option>
+                                    <option value="Farz">Farz</option>
+                                    <option value="Sanchez">Sanchez</option>
+                                    <option value="Artell">Artell</option>
+                                    <option value="Bayon">Bayon</option>
+                                    <option value="Hiblinds">Hi Blinds</option>
+                                    <option value="Bk">Bk</option>
+                                    <option value="AlexF">Alex Foster</option>
+                                </select>
+                        
+                                <input type="text" class="search-input-t" placeholder="Buscar tela...">
+                            </div>
+                        
+                            <div class="table-container-t">
+                                <!-- Aquí se mostrará la tabla filtrada -->
+                            </div>
+                        </div> 
+                    
+                        <div class="form-group">
+                            
+                            <input type="text" name="buscar[]" placeholder="Nombre de la tela" readonly required>
+                            
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="precio" name="precioT[]" placeholder="PrecioT" >
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="ancho_tela" name="anchoT[]" placeholder="anchoT" step="0.01" hidden>
+
+                        </div>
+                        <div class="form-group visilloDiv" style="display: none;">
+                            <label for="translucida">¿Es translucida?</label>
+                            <select class="form-control" name="TR[]">
+                                <option value="no">No</option>
+                                <option value="si">Si</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class='bx bx-objects-vertical-top'></i> Rapport</label>
+                            <input type="number" class="rapport" name="rapport[]" placeholder="Rapport" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class='bx bx-palette'></i> Color</label>
+                            <input type="text" class="color" name="color[]" placeholder="Color" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class='bx bx-arrows-horizontal'></i> Ancho</label>
+                            <input type="number" class="ancho" name="ancho[]" placeholder="Ancho (mts)" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class='bx bx-arrows-vertical'></i> Alto</label>
+                            <input type="number" class="alto" name="alto[]" placeholder="Alto (mts)" step="0.01" required>
+                        </div>
+                        <div class="form-group presillasDiv" style="display: none;">
+                            <label for="presillas"><i class='bx bx-plus'></i> Presillas</label>
+                            <select class="form-control" name="mt_p[]">
+                                <option value="0">0</option>
+                                <option value="0.5">0.5</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label><i class='bx bx-grid'></i> Hojas</label>
+                            <div class="form-check-inline">
+                                <label class="form-check">
+                                    <input type="radio" id="hoja1" name="hojas" value="1">
+                                    <label for="hoja1">1</label>
+                                </label>
+                                <label class="form-check">
+                                    <input type="radio" id="hoja2" name="hojas" value="2">
+                                    <label for="hoja2">2</label>
+                                </label>
+                                
+                            </label>
+                            
+                            </div>
+
+                        </div>
+                        
+                        <div class="form-group"> 
+                            <label><i class='bx bx-shopping-bag'></i> Accesorios</label>
+                            <div class="filter-options">
+                                <select class="select-filter-a">
+                                    <option value="cortineros">Cortineros</option>
+                                    <option value="accesorios">Accesorios</option>
+                                </select>
+                                <input type="text" class="search-input-a" placeholder="Buscar...">
+                            </div>
+                        
+                            <div class="table-container-a">
+                                <!-- Aquí se mostrará la tabla filtrada -->
+                            </div>
+                        
+                          
+                        </div>
+                        
+                        <div class="form-group">
+                            
+                            <input type="text" name="producto[]" placeholder="Nombre de los productos" readonly required>
+                            
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="precioPA" name="precioP[]" placeholder="PrecioP" >
+                        </div>
+                        
+                        
+                        
+
+                        <div class="form-group">
+                            <label><i class='bx bx-notepad'></i> Especificaciones</label>
+                            <input type="text" class="specs" name="specs" placeholder="Especificaciones" required>
+                        </div>
+                </div>
+              </div>
+                
+              
+              <button type="button" id="add-curtain-option" class="btn-submit">Agregar</button>
+              
+              <!-- Botón de envío -->
+              <button type="submit" class="btn-submit"><i class='bx bx-send'></i> Enviar</button>
+            </form>
+        </div>
+
+        <div id="curtain-rods-content" class="content-section">
+            <form class="form-container">
+                <h2>Pedido Cortineros</h2>
+                
+            </form>
+        </div>
+        <div id="automated-content" class="content-section">
+            <form class="form-container">
+                <h2>Pedido Cortineros Motorizados</h2>
+                
+        </div>
+        
+        <div id="samples-content" class="content-section">
+            <div class="container-samples">
+                <h1>Archivos de Cotización</h1>
+                <table id="files-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Archivo</th>
+                            <th>Fecha de Subida</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se cargarán dinámicamente las filas con JavaScript -->
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        
+    </main>
+    <script src="../JavaScript/cotizaciones.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="../JavaScript/script_bar.js" defer></script>
+<script src="../JavaScript/productos.js"></script>
+<script src="../JavaScript/telas.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('curtains-product').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar el envío por defecto del formulario
+    
+            const formData = new FormData(this);
+            const data = {};
+            
+            formData.forEach((value, key) => {
+                if (key in data) {
+                    data[key].push(value);
+                } else {
+                    data[key] = [value];
+                }
+            });
+            
+            
+            console.log('Datos del formulario:', data); // Verifica aquí los datos
+    
+            fetch('/api/cotizacion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Error en la respuesta del servidor');
+                return response.json(); 
+            })
+            .then(data => {
+                console.log('Datos recibidos del servidor:', data); 
+                if (data.message) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: data.message
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Hubo un error al guardar el archivo. Inténtalo de nuevo.'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error al enviar el formulario:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Hubo un error al enviar el formulario. Inténtalo de nuevo.'
+                });
+            });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('curtains-product');
+  
+      form.addEventListener('submit', function () {
+        form.reset();  
+      });
+    });
+  </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('curtains-options-container');
+
+   // Añadir una nueva opción de cortina
+document.getElementById('add-curtain-option').addEventListener('click', () => {
+    const newOption = document.createElement('div');
+    newOption.classList.add('curtain-option');
+    newOption.innerHTML = `
+        <div class="form-group">
+            <label><i class='bx bx-home'></i> Área</label>
+            <input type="text" class="lugar" name="lugar[]" placeholder="Área" required>
+        </div>
+        <div class="form-group">
+            <label for="make"><i class='bx bx-home'></i>Confección</label>
+            <select name="make[]" class="make form-control">
+                <option value="Plitz frances">Plitz francés</option>
+                <option value="Ondulet">Ondulet</option>
+                <option value="Ojillos">Ojillos</option>
+                <option value="Visillos">Visillos</option>
+                <option value="Presillas">Presillas</option>
+                <option value="Presilla oculta">Presilla oculta</option>
+                <option value="Tableado">Tableado</option>
+                <option value="Pliegue inverso">Pliegue inverso</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label><i class='bx bx-library'></i> Telas</label>
+            <div class="filter-options">
+                <select class="select-filter-t" name="proveedor[]">
+                    <option value="Mazahua">Mazahua</option>
+                    <option value="Vertilux">Vertilux</option>
+                    <option value="Atelier">Atelier</option>
+                    <option value="ProyectaTex">ProyectaTex</option>
+                    <option value="Dicsa">Dicsa</option>
+                    <option value="Pani">Pani</option>
+                    <option value="Vistatex">Vistatex</option>
+                    <option value="Farz">Farz</option>
+                    <option value="Sanchez">Sanchez</option>
+                    <option value="Artell">Artell</option>
+                    <option value="Bayon">Bayon</option>
+                    <option value="Hiblinds">Hi Blinds</option>
+                    <option value="Bk">Bk</option>
+                    <option value="AlexF">Alex Foster</option>
+                </select>
+                <input type="text" class="search-input-t" placeholder="Buscar tela...">
+            </div>
+            <div class="table-container-t">
+                <!-- Aquí se mostrará la tabla filtrada -->
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="buscar[]" placeholder="Nombre de la tela" readonly required>
+        </div>
+        <div class="form-group">
+            <input type="number" class="precio" name="precioT[]" placeholder="PrecioT">
+        </div>
+        <div class="form-group">
+            <input type="number" class="ancho_tela" name="anchoT[]" placeholder="anchoT"  step="0.01" readonly hidden>
+        </div>
+        <div class="form-group">
+            <label><i class='bx bx-objects-vertical-top'></i> Rapport</label>
+            <input type="number" class="rapport" name="rapport[]" placeholder="Rapport" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label><i class='bx bx-palette'></i> Color</label>
+            <input type="text" class="color" name="color[]" placeholder="Color" required>
+        </div>
+        <div class="form-group">
+            <label><i class='bx bx-arrows-horizontal'></i> Ancho</label>
+            <input type="number" class="ancho" name="ancho[]" placeholder="Ancho (mts)" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label><i class='bx bx-arrows-vertical'></i> Alto</label>
+            <input type="number" class="alto" name="alto[]" placeholder="Alto (mts)" step="0.01" required>
+        </div>
+        <div class="form-group presillasDiv" style="display: none;">
+            <label for="presillas"><i class='bx bx-plus'></i> Presillas</label>
+            <select class="form-control">
+                <option value="0">0</option>
+                <option value="0.5">0.5</option>
+                <option value="1">1</option>
+                <option value="1.5">1.5</option>
+                <option value="2">2</option>
+                <option value="2.5">2.5</option>
+                <option value="3">3</option>
+            </select>
+        </div>       
+        <div class="form-group">
+            <label><i class='bx bx-grid'></i> Hojas</label>
+            <div class="form-check-inline">
+                <label class="form-check">
+                    <input type="checkbox" name="hojas[]" value="1">
+                    <label>1</label>
+                </label>
+                <label class="form-check">
+                    <input type="checkbox" name="hojas[]" value="2">
+                    <label>2</label>
+                </label>
+            </div>
+        </div>
+          <div class="form-group"> 
+                            <label><i class='bx bx-shopping-bag'></i> Accesorios</label>
+                            <div class="filter-options">
+                                <select class="select-filter-a">
+                                    <option value="cortineros">Cortineros</option>
+                                    <option value="accesorios">Accesorios</option>
+                                </select>
+                                <input type="text" class="search-input-a" placeholder="Buscar...">
+                            </div>
+                        
+                            <div class="table-container-a">
+                                <!-- Aquí se mostrará la tabla filtrada -->
+                            </div>
+                        
+                          
+            </div>
+                        
+                        <div class="form-group">
+                            
+                            <input type="text" name="producto[]" placeholder="Nombre de los productos" readonly required>
+                            
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="precioPA" name="precioP[]" placeholder="PrecioP" >
+                        </div>
+
+    `;
+
+// Añadir la nueva opción al contenedor
+container.appendChild(newOption);
+
+// Vincular eventos de búsqueda y filtrado de telas
+newOption.querySelector('.select-filter-t').addEventListener('change', fetchFabricData);
+newOption.querySelector('.search-input-t').addEventListener('input', fetchFabricData);
+
+// Manejar selección de telas
+const newTableContainer = newOption.querySelector('.table-container-t');
+newTableContainer.addEventListener('change', function(event) {
+    if (event.target.classList.contains('telaRadio')) {
+        const selectedRadio = event.target;
+        const telaName = selectedRadio.value;
+        const telaPrice = parseFloat(selectedRadio.getAttribute('data-price')) || 0;
+        const telaAncho = parseFloat(selectedRadio.getAttribute('data-ancho')) || 0;
+        
+        newOption.querySelector('input[name="buscar[]"]').value = telaName;
+        newOption.querySelector('.precio').value = telaPrice;
+        newOption.querySelector('.ancho_tela').value = telaAncho;
+    }
+});
+
+// Vincular eventos de búsqueda y filtrado de productos
+newOption.querySelector('.select-filter-a').addEventListener('change', fetchProductData);
+newOption.querySelector('.search-input-a').addEventListener('input', fetchProductData);
+
+// Manejar selección de productos
+const newTableContainer_a = newOption.querySelector('.table-container-a');
+newTableContainer_a.addEventListener('change', function(event) {
+    if (event.target.classList.contains('PDRadio')) {
+        const PDselectedRadio = event.target;
+        const PDName = PDselectedRadio.value;
+        const PDPrice = parseFloat(PDselectedRadio.getAttribute('data-price')) || 0;
+        
+        newOption.querySelector('input[name="producto[]"]').value = PDName;
+        newOption.querySelector('.precioPA').value = PDPrice;
+    }
+});
+
+
+});
+
+   
+
+    // Manejar el envío del formulario
+    document.getElementById('curtains-product').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const datos = Object.fromEntries(formData.entries());
+
+        // Obtener el precio del campo oculto
+        datos.precio = parseFloat(precioInput.value) || 0;
+
+       
+
+            // Aquí puedes enviar los datos al servidor si es necesario
+            fetch('/api/cotizacion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(datos),
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('Cotización guardada con éxito.');
+                } else {
+                    alert('Hubo un error al guardar la cotización.');
+                }
+            });
+        
+    });
+});
+
+</script>
+<script>
+    function togglePresillas(event) {
+        
+        var select = event.target;
+        var presillasDiv = select.closest('.curtain-option').querySelector('.presillasDiv');
+        
+        if (select.value === "Presillas") {
+            presillasDiv.style.display = "block";
+        } else {
+            presillasDiv.style.display = "none";
+        }
+    }
+
+    // Añadir el evento a todos los selects que tienen la clase "make"
+    document.addEventListener('change', function(event) {
+        if (event.target.matches('.make')) {
+            togglePresillas(event);
+        }
+    });
+</script>
+
+<script>
+    function toggleVisillos(event) {
+        
+        var select = event.target;
+        var visilloDiv   = select.closest('.curtain-option').querySelector('.visilloDiv');
+        
+        if (select.value === "Visillos") {
+           visilloDiv.style.display = "block";
+        } else {
+           visilloDiv.style.display = "none";
+        }
+    }
+
+    // Añadir el evento a todos los selects que tienen la clase "make"
+    document.addEventListener('change', function(event) {
+        if (event.target.matches('.make')) {
+            toggleVisillos(event);
+        }
+    });
+</script>
+
+
+    <script>
+        document.getElementById('logout-button').addEventListener('click', function() {
+            fetch('/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/index.html';
+                } else {
+                    alert('Error al cerrar sesión');
+                }
+            })
+            .catch(error => {
+                console.error('Error al cerrar sesión:', error);
+            });
+        });
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> 
+</body>
+</html>
