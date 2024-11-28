@@ -211,89 +211,66 @@
     <script src="../JavaScript/users.js" defer></script>
     <script src="../JavaScript/calendar.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          function loadLog() {
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function loadLog() {
             fetch('/api/logs')
-              .then(response => {
-                if (!response.ok) {
-                  throw new Error('Error al cargar el log');
+                .then(response => {
+                    if (!response.ok) throw new Error('Error al cargar el log');
+                    return response.text();
+                })
+                .then(data => {
+                    const historyContainer = document.querySelector('.history-container');
+                    const logContent = document.createElement('pre');
+                    logContent.textContent = data;
+                    historyContainer.innerHTML = '<h1>Historial de actividad</h1>';
+                    historyContainer.appendChild(logContent);
+                })
+                .catch(error => console.error('Error al cargar el log:', error));
+        }
+        loadLog();
+        setInterval(loadLog, 3000);
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var lazyImages = document.querySelectorAll(".item");
+        function lazyLoad() {
+            lazyImages.forEach(function(image) {
+                if (image.dataset.src && isInViewport(image)) {
+                    image.style.backgroundImage = 'url(' + image.dataset.src + ')';
+                    image.removeAttribute("data-src");
                 }
-                return response.text();
-              })
-              .then(data => {
-                const historyContainer = document.querySelector('.history-container');
-                const logContent = document.createElement('pre'); // Usar 'pre' para preservar los saltos de línea
-                logContent.textContent = data;
-      
-                // Limpiar el contenido previo y agregar el nuevo log
-                historyContainer.innerHTML = '<h1>Historial de actividad</h1>';
-                historyContainer.appendChild(logContent);
-              })
-              .catch(error => {
-                console.error('Error al cargar el log:', error);
-              });
-          }
-      
-          // Cargar el log inicialmente
-          loadLog();
-      
-          // Actualizar el log cada 3 segundos (3000 milisegundos)
-          setInterval(loadLog, 3000);
-        });
-      </script>
-      
-      
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var lazyImages = document.querySelectorAll(".item");
-
-            function lazyLoad() {
-                lazyImages.forEach(function(image) {
-                    if (image.dataset.src && isInViewport(image)) {
-                        image.style.backgroundImage = 'url(' + image.dataset.src + ')';
-                        image.removeAttribute("data-src");
-                    }
-                });
-            }
-
-            function isInViewport(element) {
-                var rect = element.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-
-            
-            lazyLoad();
-
-            
-            document.addEventListener("scroll", lazyLoad);
-        });
-    </script>
-    <script>
-        document.getElementById('logout-button').addEventListener('click', function() {
-            fetch('/logout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = '/index.html';
-                } else {
-                    alert('Error al cerrar sesión');
-                }
-            })
-            .catch(error => {
-                console.error('Error al cerrar sesión:', error);
             });
-        });
-    </script>
+        }
+        function isInViewport(element) {
+            var rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        lazyLoad();
+        document.addEventListener("scroll", lazyLoad);
+    });
+</script>
+<script>
+    document.getElementById('logout-button').addEventListener('click', function() {
+        fetch('/logout', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => {
+            if (response.ok) window.location.href = '/index.html';
+            else alert('Error al cerrar sesión');
+        })
+        .catch(error => console.error('Error al cerrar sesión:', error));
+    });
+</script>
+
     
 </body>
 </html>
